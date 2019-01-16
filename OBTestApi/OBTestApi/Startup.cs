@@ -44,9 +44,11 @@ namespace OBTestApi
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors(
-                options => options.WithOrigins("*").AllowAnyMethod()
-            );
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials());
 
             app.UseMvc();
             app.UseSwagger();
